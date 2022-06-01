@@ -7,6 +7,7 @@ TagManager:
   - Checkpoint1
   - Checkpoint2
   - RotatingCoin
+  - Checkpoint3
   layers:
   - Default
   - TransparentFX

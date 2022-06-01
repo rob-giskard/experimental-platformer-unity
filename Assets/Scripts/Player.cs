@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Renderer rendererComponent;
     Vector3 checkpoint1;
     Vector3 checkpoint2;
+    Vector3 checkpoint3;
     Vector3 currentPos;
     bool jumpKeyWasPressed;
     float horizontalInput;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         rendererComponent = GetComponent<Renderer>();
         checkpoint1 = GameObject.FindGameObjectWithTag("Checkpoint1").transform.position;
         checkpoint2 = GameObject.FindGameObjectWithTag("Checkpoint2").transform.position;
+        checkpoint3 = GameObject.FindGameObjectWithTag("Checkpoint3").transform.position;
         coinsCollected = 0;
         speed = 2;
         jumpHeight = 7;
@@ -54,15 +56,21 @@ public class Player : MonoBehaviour
         rigidbodyComponent.velocity = new Vector3(horizontalInput * speed, rigidbodyComponent.velocity.y, 0);
 
         // Respawn player at checkpoint1 
-        if (currentPos.y < -3)
+        if (currentPos.y < -4)
         {
             transform.position = checkpoint1;
         }
 
         // Respawn player at Checkpoint2
-        if (currentPos.y < -3 && currentPos.x >= checkpoint2.x)
+        if (currentPos.y < -4 && currentPos.x >= checkpoint2.x)
         {
             transform.position = checkpoint2;
+        }
+
+        // Respawn player at Checkpoint2
+        if (currentPos.y < -4 && currentPos.x >= checkpoint3.x)
+        {
+            transform.position = checkpoint3;
         }
 
         // Gain/lose power-ups after collecting specific amounts of coins
