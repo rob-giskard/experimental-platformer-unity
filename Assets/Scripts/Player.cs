@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     Vector3 checkpoint3;
     Vector3 currentPos;
     bool jumpKeyWasPressed;
-    float horizontalInput;
+    public static float horizontalInput;
     int coinsCollected;
     int speed;
     int jumpHeight;
