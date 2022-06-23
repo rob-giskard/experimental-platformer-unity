@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     Vector3 currentPos;
     bool jumpKeyWasPressed;
     public static float horizontalInput;
-    int coinsCollected;
+    public static int pillsCollected;
     int speed;
     int jumpHeight;
 
@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
         checkpoint1 = GameObject.FindGameObjectWithTag("Checkpoint1").transform.position;
         checkpoint2 = GameObject.FindGameObjectWithTag("Checkpoint2").transform.position;
         checkpoint3 = GameObject.FindGameObjectWithTag("Checkpoint3").transform.position;
-        coinsCollected = 0;
         speed = 2;
         jumpHeight = 7;
     }
@@ -74,7 +73,7 @@ public class Player : MonoBehaviour
         }
 
         // Gain/lose power-ups after collecting specific amounts of coins
-        if (coinsCollected > 0 && coinsCollected % 3 == 0)
+        if (PillsCounter.pillsAmount > 0 && PillsCounter.pillsAmount % 3 == 0)
         {
             rendererComponent.material.color = Color.red;
             speed = 4;
@@ -116,12 +115,16 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             Destroy(other.gameObject);
-            coinsCollected++;
+            PillsCounter.pillsAmount++;
+                if (PillsCounter.pillsAmount > 3)
+                {
+                    PillsCounter.pillsAmount = 1;
+                }
         }
         else if (other.gameObject.layer == 8)
         {
             Destroy(other.gameObject);
-            SimpleSpinningCoinCounter.spinningCoinsAmount++;
+            SpinningCoinCounter.spinningCoinsAmount++;
             Debug.Log("SPINNING COIN COLLECTED");
 
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SimpleSpinningCoinCounter : MonoBehaviour
+public class SpinningCoinCounter : MonoBehaviour
 {    
    Text coinText;
    public static int spinningCoinsAmount;
@@ -17,6 +17,6 @@ public class SimpleSpinningCoinCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinText.text = spinningCoinsAmount.ToString();
+        coinText.text = "Real coins: " + spinningCoinsAmount.ToString();
     }
 }
